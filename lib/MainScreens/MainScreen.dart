@@ -1,5 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:rider_app/TabScreen/EarningsTabPage.dart';
+import 'package:rider_app/TabScreen/HomeTabPage.dart';
+import 'package:rider_app/TabScreen/ProfileTabPage.dart';
+import 'package:rider_app/TabScreen/RatingTabPage.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -8,12 +12,49 @@ class MainScreen extends StatefulWidget {
   State<MainScreen> createState() => _MainScreenState();
 }
 
-class _MainScreenState extends State<MainScreen> {
+class _MainScreenState extends State<MainScreen>
+    with SingleTickerProviderStateMixin
+     {
+  int selectedTab = 0;
+  TabController? tabController;
+  onItemClicked(int index) {
+    setState(() {
+      {
+        selectedTab = index;
+        tabController!.index = index;
+      }
+    });
+  }
+
+  void initState() {
+    super.initState();
+    tabController = TabController(length: 4, vsync: this);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Welcome"),
+      body: TabBarView(controller: tabController, physics:const NeverScrollableScrollPhysics(), 
+      children: const [
+        HomeTabPage(),
+        EarningsTabPage(),
+        ProfileTabPage(),
+        RatingTabPage(),
+      ]),
+      bottomNavigationBar: BottomNavigationBar(
+        items: [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.credit_card), label: "Earnings"),
+          BottomNavigationBarItem(icon: Icon(Icons.star), label: "Ratings"),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
+        ],
+        type: BottomNavigationBarType.fixed,
+        backgroundColor: Colors.black,
+        currentIndex: selectedTab,
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.white54,
+        onTap: onItemClicked,
       ),
     );
   }

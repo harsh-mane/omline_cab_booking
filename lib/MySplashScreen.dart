@@ -4,6 +4,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:rider_app/MainScreens/MainScreen.dart';
+import 'package:rider_app/auth/SignUpScreen.dart';
 
 class MySplashScreen extends StatefulWidget {
   const MySplashScreen({super.key});
@@ -20,7 +21,7 @@ class _MySplashScreenState extends State<MySplashScreen> {
         Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => const MainScreen(),
+              builder: (context) => const SignUpScreen(),
             ));
       },
     );
