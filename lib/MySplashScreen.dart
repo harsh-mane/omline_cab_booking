@@ -1,10 +1,5 @@
-
-
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:rider_app/MainScreens/MainScreen.dart';
-import 'package:rider_app/auth/SignUpScreen.dart';
+import 'registration_options_dialog.dart'; // Import the dialog
 
 class MySplashScreen extends StatefulWidget {
   const MySplashScreen({super.key});
@@ -13,26 +8,34 @@ class MySplashScreen extends StatefulWidget {
   State<MySplashScreen> createState() => _MySplashScreenState();
 }
 
-class _MySplashScreenState extends State<MySplashScreen> {
-  void startTimer() {
-    Future.delayed(
-      const Duration(seconds: 2),
-      () async {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => const SignUpScreen(),
-            ));
-      },
-    );
-  }
+class _MySplashScreenState extends State<MySplashScreen>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _fadeAnimation;
+  late Animation<double> _scaleAnimation;
 
   @override
   void initState() {
-    // TODO: implement initState
-
     super.initState();
-    startTimer();
+
+    _controller = AnimationController(
+      duration: const Duration(seconds: 2),
+      vsync: this,
+    );
+
+    _fadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(_controller);
+    _scaleAnimation = Tween<double>(begin: 0.5, end: 1.0).animate(_controller);
+
+    _controller.forward().then((_) {
+      // After the animation completes, show the registration options dialog
+      RegistrationOptionsDialog.show(context); // Call the dialog
+    });
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 
   @override
@@ -44,14 +47,25 @@ class _MySplashScreenState extends State<MySplashScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.asset("assets/images/taxi_logo.png"),
-              Text(
-                "CloneABC",
-                style: TextStyle(
+              ScaleTransition(
+                scale: _scaleAnimation,
+                child: FadeTransition(
+                  opacity: _fadeAnimation,
+                  child: Image.asset("assets/images/taxi_logo.png"),
+                ),
+              ),
+              FadeTransition(
+                opacity: _fadeAnimation,
+                child: const Text(
+                  "CloneABC",
+                  style: TextStyle(
                     fontSize: 24,
                     color: Colors.yellow,
-                    fontWeight: FontWeight.bold),
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ),
+              const SizedBox(height: 20),
             ],
           ),
         ),

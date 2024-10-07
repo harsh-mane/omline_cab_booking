@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:rider_app/TabScreen/EarningsTabPage.dart';
-import 'package:rider_app/TabScreen/HomeTabPage.dart';
-import 'package:rider_app/TabScreen/ProfileTabPage.dart';
-import 'package:rider_app/TabScreen/RatingTabPage.dart';
+import 'package:rider_app/service_provider/TabScreen/EarningsTabPage.dart';
+import 'package:rider_app/service_provider/TabScreen/HomeTabPage.dart';
+import 'package:rider_app/service_provider/TabScreen/ProfileTabPage.dart';
+import 'package:rider_app/service_provider/TabScreen/RatingTabPage.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -26,6 +26,7 @@ class _MainScreenState extends State<MainScreen>
     });
   }
 
+  @override
   void initState() {
     super.initState();
     tabController = TabController(length: 4, vsync: this);
@@ -42,7 +43,7 @@ class _MainScreenState extends State<MainScreen>
         RatingTabPage(),
       ]),
       bottomNavigationBar: BottomNavigationBar(
-        items: [
+        items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
           BottomNavigationBarItem(
               icon: Icon(Icons.credit_card), label: "Earnings"),
@@ -54,7 +55,7 @@ class _MainScreenState extends State<MainScreen>
         currentIndex: selectedTab,
         selectedItemColor: Colors.white,
         unselectedItemColor: Colors.white54,
-        onTap: onItemClicked,
+        onTap: onItemClicked, 
       ),
     );
   }
