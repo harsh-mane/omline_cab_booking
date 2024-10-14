@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-import 'package:rider_app/MySplashScreen.dart';
+import 'package:rider_app/outsider_files/MySplashScreen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(MyApp(
-    child: const MySplashScreen(),
+  runApp(const MyApp(
+    child: MySplashScreen(),
   ));
 }
 

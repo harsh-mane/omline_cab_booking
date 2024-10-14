@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:rider_app/service_provider/TabScreen/EarningsTabPage.dart';
 import 'package:rider_app/service_provider/TabScreen/HomeTabPage.dart';

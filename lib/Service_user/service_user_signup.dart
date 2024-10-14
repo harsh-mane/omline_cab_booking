@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 
-// Renaming the class to avoid naming conflicts
-class ServiceUserSignUpScreen extends StatefulWidget {
-  const ServiceUserSignUpScreen({Key? key}) : super(key: key);
+class ServiceUserSignupScreen  { // Define the ServiceUser  class
+  // Add properties and methods as needed
+}
 
-  @override
-  // ignore: library_private_types_in_public_api
-  _ServiceUserSignUpScreenState createState() => _ServiceUserSignUpScreenState();
+class ServiceUserSignUpScreen extends StatefulWidget {
+  const ServiceUserSignUpScreen({super.key, this.ServiceUserSignUpScreenState});
+
+  final ServiceUserSignUpScreenState;
+
+ @override
+  createState() => ServiceUserSignUpScreenState();
 }
 
 class _ServiceUserSignUpScreenState extends State<ServiceUserSignUpScreen> {
@@ -17,7 +21,7 @@ class _ServiceUserSignUpScreenState extends State<ServiceUserSignUpScreen> {
     const HomePage(),      // Home tab content
     const ServicesPage(),  // Services tab content
     const RatingPage(),    // Rating tab content
-    ProfilePage(),   // Profile tab content
+    const ProfilePage(),   // Profile tab content
   ];
 
   // Method to handle tab selection
@@ -38,46 +42,6 @@ class _ServiceUserSignUpScreenState extends State<ServiceUserSignUpScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text(
-              "Service User Sign Up",
-              style: TextStyle(fontSize: 24),
-            ),
-            const SizedBox(height: 20),
-            // Username field
-            const TextField(
-              decoration: InputDecoration(
-                labelText: "Username",
-                border: OutlineInputBorder(),
-              ),
-            ),
-            const SizedBox(height: 10),
-            // Email field
-            const TextField(
-              decoration: InputDecoration(
-                labelText: "Email",
-                border: OutlineInputBorder(),
-              ),
-            ),
-            const SizedBox(height: 10),
-            // Password field
-            const TextField(
-              obscureText: true,
-              decoration: InputDecoration(
-                labelText: "Password",
-                border: OutlineInputBorder(),
-              ),
-            ),
-            const SizedBox(height: 20),
-            // Register button
-            ElevatedButton(
-              onPressed: () {
-                // Registration logic here
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text("Service User Registered!")),
-                );
-              },
-              child: const Text("Register"),
-            ),
             const SizedBox(height: 20),
             // Display content based on the selected tab
             Expanded(child: _widgetOptions[_selectedIndex]),
@@ -85,22 +49,9 @@ class _ServiceUserSignUpScreenState extends State<ServiceUserSignUpScreen> {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        
-
-
-
-
-
-
-
-
-
-
-
-
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home,),
+            icon: Icon(Icons.home),
             label: 'Home',
           ),
           BottomNavigationBarItem(
@@ -179,8 +130,6 @@ class ProfilePage extends StatelessWidget {
         "Profile Information",
         style: TextStyle(fontSize: 20),
       ),
-    
     );
-    
   }
 }

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:rider_app/Service_user/ServiceUserSignUpScreen.dart';
 
 
 
+// ignore: unused_import
 import 'package:rider_app/service_provider/MainScreens/MainScreen.dart';
 import 'package:rider_app/service_provider/SignUpScreen.dart';
-import 'package:rider_app/service_provider/TabScreen/ServiceUserSignUpScreen.dart'; 
+
 
 class RegistrationOptionsDialog {
   static Future<void> show(BuildContext context) async {

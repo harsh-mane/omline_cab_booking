@@ -24,8 +24,8 @@ class _HomeUserState extends State<HomeUser> {
                 border: OutlineInputBorder(),
               ),
               onChanged: (query) {
-                setState(() {
-                });
+                // Handle search text change here
+                print("Search query: $query");
               },
             ),
           ),
@@ -33,8 +33,9 @@ class _HomeUserState extends State<HomeUser> {
             onPressed: () {
               // Handle search functionality here
               // For example, you can print the search query to the console
+              print("Search button pressed: ${_searchController.text}");
             },
-            icon: Icons.search,
+            icon: const Icon(Icons.search), // Add an actual icon here
           ),
         ],
       ),

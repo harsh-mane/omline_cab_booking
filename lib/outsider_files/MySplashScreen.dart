@@ -42,7 +42,7 @@ class _MySplashScreenState extends State<MySplashScreen>
   Widget build(BuildContext context) {
     return Material(
       child: Container(
-        color: Colors.black87,
+        color: const Color.fromARGB(221, 149, 150, 103),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -60,7 +60,7 @@ class _MySplashScreenState extends State<MySplashScreen>
                   "CloneABC",
                   style: TextStyle(
                     fontSize: 24,
-                    color: Colors.yellow,
+                    color: Colors.black,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
